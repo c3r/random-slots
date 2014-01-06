@@ -25,37 +25,28 @@ var LotterySlot = (function() {
         this.fontSize = options.fontSize;
 
         this.value = value;
+
         this.element = elem;
         this.element.css("height", this.height);
         this.element.css("line-height", this.height + "px");
         this.element.css("width", this.width);
         this.element.css("font-size", this.fontSize + "px");
 
+        this.rollFor = (this.rolls + this.value) * this.height;
+        this.slider = this.element.find( ".slider" );
 
-        var rollFor = (this.rolls + this.value) * this.height;
-        var slider = this.element.find( ".slider" );
-        var list = slider.find("ul");
-
+        var list = this.slider.find("ul");
 
         for(var i=0; i<this.rolls; i++) {
-            list.clone().appendTo(slider);
+            list.clone().appendTo(this.slider);
         }
-
-        slider.animate({
-            top: "-=" + rollFor
-          }, rollFor * this.speed, "easeInOutCirc"
-        );
-
-        // var list = slider.find("ul");
-
     }
 
     LotterySlot.prototype.spin = function() {
-
-        // console.log(rollFor * this.speed/maxRollingSpeed);
-
-
-
+        this.slider.animate({
+            top: "-=" + this.rollFor
+          }, this.rollFor * this.speed, "easeInOutCirc"
+        );
     };
 
     LotterySlot.prototype.appendTo = function(parent) {

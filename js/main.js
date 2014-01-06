@@ -20,13 +20,12 @@
 		GRAY3	 = '95A5A6',
 		GRAY4	 = '7F8C8D';
 
-// Start module
-LotteryGames.start({
+LotteryGames.init({
 	gameTemplate   	: $("#game-template"),
 	groupTemplate  	: $("#group-template"),
 	numberTemplate 	: $("#number-template"),
 	slotTemplate   	: $("#slot-template"),
-	slotHeight	   	: 80,
+	slotHeight	   	: 100,
 	slotWidth	   	: 50,
 	borderColor		: YELLOW1,
 	fontSizeFactor 	: 0.7,
@@ -47,20 +46,29 @@ LotteryGames.start({
 $(document).bind('keyup', function(event) {
 	var c = String.fromCharCode(event.keyCode);
 	var delay = 600;
-	if(c == "O") {
-		if(this.optionsEnabled) {
-			$('.options').animate({
-			    top: "-100%"
-			  }, delay
-			);
-			this.optionsEnabled = false;
-		} else {
-			$('.options').animate({
-			    top: 0
-			  }, delay
-			);
-			this.optionsEnabled = true;
-		}
+
+	switch(c) {
+		case "O":
+			if(this.optionsEnabled) {
+				$('.options').animate({
+				    top: "-100%"
+				  }, delay
+				);
+				this.optionsEnabled = false;
+			} else {
+				$('.options').animate({
+				    top: 0
+				  }, delay
+				);
+				this.optionsEnabled = true;
+			}
+			break;
+		case "1":
+			LotteryGames.start(0);
+			break;
+		case "2":
+			LotteryGames.start(1);
+			break;
 	}
 });
 

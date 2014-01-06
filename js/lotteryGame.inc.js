@@ -6,6 +6,10 @@ var LotteryGame = (function() {
 
     'use strict';
 
+    // function arrayHasOwnIndex(array, prop) {
+    //     return array.hasOwnProperty(prop) && /^0$|^[1-9]\d*$/.test(prop) && prop <= 4294967294; // 2^32 - 2
+    // }
+
     function LotteryGame( options ) {
         if (!(this instanceof LotteryGame)) {
             return new LotteryGame();
@@ -24,10 +28,21 @@ var LotteryGame = (function() {
     }
 
     LotteryGame.prototype.appendTo = function(parent) {
-        for (var i = this.groups.length - 1; i >= 0; i--) {
-            this.groups[i].appendTo(this.element);
+        for (var key in this.groups) {
+            if (this.groups.hasOwnProperty(key)) {
+                this.groups[key].appendTo(this.element);
+            }
         }
         this.element.appendTo(parent);
+    }
+
+    LotteryGame.prototype.start = function() {
+        for (var key in this.groups) {
+            if (this.groups.hasOwnProperty(key)) {
+                console.log(key);
+                this.groups[key].animate();
+            }
+        }
     }
 
     return LotteryGame;

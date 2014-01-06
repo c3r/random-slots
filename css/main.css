@@ -245,23 +245,37 @@ h1 {
    Number wrapper
    ========================================================================== */
 
-.number-wrapper {
-    -webkit-box-shadow: 0 0 1em 0 rgba(0,0,0,0.5);
-            box-shadow: 0 0 1em 0 rgba(0,0,0,0.5);
+.number-wrapper:before {
+    content: ' ';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    -webkit-box-shadow: inset 0 0 3em 0 rgba(0,0,0,0.9);
+            box-shadow: inset 0 0 3em 0 rgba(0,0,0,0.9);
 }
+
+.number-wrapper {
+    overflow:hidden;
+    margin: 0;
+    padding: 0;
+    position:relative;
+}
+
 
 /* ==========================================================================
    Number slot style
    ========================================================================== */
 
 .number-slot {
-    overflow: hidden;
-    text-align: center;
+    display:block;
+    float:left;
+    border-left:1px solid #000;
     font-weight: bold;
-    position: relative;
+    text-align: center;
+    background: white;
     display: block;
-    float: left;
-    border-left: 1px solid #000;
 }
 
 .number-slot:first-child {
@@ -273,9 +287,8 @@ h1 {
     display: block;
     height: 100%;
     width: 100%;
-    /*background: white;*/
-    background-image: url(../img/shadow_bg.png);
-    background-size: 100% auto;
+    /*background-image: url(../img/shadow_bg.png);*/
+    /*background-size: 100% auto;*/
     /*-webkit-box-shadow: inset 0 .6em 1.7em 0 rgba(0,0,0,0.75);*/
             /*box-shadow: inset 0 .6em 1em 0 rgba(0,0,0,0.75);*/
 }
@@ -290,6 +303,7 @@ h1 {
 .number-slot > .wrapper > .slider > ul {
     margin: 0;
     padding: 0;
+    list-style-type: none;
 }
 
 .number-slot > .wrapper > .slider > ul > li {
@@ -297,8 +311,6 @@ h1 {
     width: 100%;
     text-align: center;
 }
-
-
 
 #slot-template, #number-template, #group-template, #game-template {
     display: none;

@@ -125,7 +125,6 @@
             </form>
         </div>
 
-
 <!--         <table class="lottery-template">
             <tbody>
                 <tr class="lottery-row">
@@ -136,11 +135,16 @@
             </tbody>
         </table> -->
 
-        <div class="game-wrapper" id="game-template"></div>
-        <div class="group-wrapper" id="group-template"></div>
-        <div class="number-wrapper clearfix" id="number-template"></div>
+        <div class="game-wrapper" id="game-template">
+            <h1>Losowanie {id}:</h1>
+        </div>
+        <div class="group-wrapper" id="group-template">
+            <h1>Grupa {id}:</h1>
+        </div>
 
-        <div class="number-slot" id="slot-template">
+
+        <ul class="number-wrapper" id="number-template"></ul>
+        <li class="number-slot" id="slot-template">
             <div class="wrapper">
                 <div class="slider">
                     <ul>
@@ -157,7 +161,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </li>
 
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script src="js/lib/underscore-min.js"></script>

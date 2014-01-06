@@ -51,17 +51,20 @@ var LotteryNumber = (function() {
     }
 
     LotteryNumber.prototype.appendTo = function(parent) {
-        for (var i=0; i<this.slots.length; i++) {
-            // console.log("this.slots[i].appendTo(this.element)");
-            this.slots[i].appendTo(this.element);
+        for (var key in this.slots) {
+            if (this.slots.hasOwnProperty(key)) {
+                this.slots[key].appendTo(this.element);
+            }
         }
         this.element.appendTo(parent);
     }
 
     LotteryNumber.prototype.animate = function() {
-        for (var i = this.slots.length - 1; i >= 0; i--) {
-            this.slots[i].spin();
-        };
+        for (var key in this.slots) {
+            if (this.slots.hasOwnProperty(key)) {
+                this.slots[key].spin();
+            }
+        }
     }
 
     return LotteryNumber;

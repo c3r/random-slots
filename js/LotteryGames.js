@@ -29,7 +29,7 @@ var LotteryGames = (function() {
 		optionsEnabled: false,
 		games: [],
 
-		start: function( options ) {
+		init: function( options ) {
 
 			var gameOptions, groupOptions, numOptions, game, group, number;
 			// Games generation -----------------------------------
@@ -71,13 +71,7 @@ var LotteryGames = (function() {
 				}
 				this.games[i].appendTo( $("body") );
 			};
-			// for(var i=0; i<options.gamesNum; i++) {
-			// 	for(var j=0; j<options.groupsNum; j++) {
-			// 		for(var k=0; k<options.numsNum; k++) {
-			// 			this.games[i].groups[j].numbers[k].animate();
-			// 		}
-			// 	}
-			// }
+
 			if(!this.optionsEnabled) {
 				$('.options').css("top", "-100%");
 			};
@@ -85,6 +79,9 @@ var LotteryGames = (function() {
 		},
 		enableOptions: function(enable) {
 			optionsEnabled = enable;
+		},
+		start: function(gameId) {
+			this.games[gameId].start();
 		}
 	};
 }());
