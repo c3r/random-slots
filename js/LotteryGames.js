@@ -1,5 +1,4 @@
 var LotteryGames = (function() {
-
 	'use strict';
 
 	var randomNumsCache = [];
@@ -33,7 +32,6 @@ var LotteryGames = (function() {
 		start: function( options ) {
 
 			var gameOptions, groupOptions, numOptions, game, group, number;
-
 			// Games generation -----------------------------------
 			for(var i=0; i<options.gamesNum; i++) {
 				this.games[i] = new LotteryGame({
@@ -42,8 +40,6 @@ var LotteryGames = (function() {
 					title     : options.gameTitle + " " + i || "Losowanie",
 					element   : options.gameTemplate.clone().removeAttr("id")
 				});
-				// console.log("Dodano gre " + i);
-				// console.log("i:"+i);
 				// Groups generation -----------------------------------
 				for(var j=0; j<options.groupsNum; j++) {
 					group = new LotteryGroup({
@@ -51,7 +47,6 @@ var LotteryGames = (function() {
 						name     : options.groupTitle + " " + j || "Grupa",
 						element  : options.groupTemplate.clone().removeAttr("id")
 					});
-					// console.log("j:"+j);
 					// Numbers generation -----------------------------------
 					for(var k=0; k<options.numsNum; k++) {
 						group.addNum( new LotteryNumber({
@@ -59,70 +54,39 @@ var LotteryGames = (function() {
 		        			borderColor  : options.borderColor || "000000",
 		        			value        : getRand(options.min, options.max) || 0,
 		        			element      : options.numberTemplate.clone().removeAttr("id"),
-		        			max 		 : options.max,
+		        			max 		 : options.max || 1000,
 		        			slotOptions  : {
 		        				id 			: k,
 								height      : options.slotHeight || 100,
 						        width       : options.slotWidth || 80,
+						        minRolls	: options.minRolls || 1,
+						        maxRolls	: options.maxRolls || 10,
 						        sliderClass : options.sliderClass || ".slider",
-						        value	    : options.value || 0,
 						        fontSize    : options.fontSize || options.slotHeight * 0.7,
 								template    : options.slotTemplate
 		        			}
 						}) );
-						// console.log("Dodano numer " + k + " do grupy " + j + " do gry " + i);
-						// console.log("k:"+k);
 					}
 					this.games[i].addGroup( group );
-					// console.log("Dodano grupe " + j + ", do Gry " + i);
 				}
-
 				this.games[i].appendTo( $("body") );
-
 			};
-
-			for(var i=0; i<options.gamesNum; i++) {
-				for(var j=0; j<options.groupsNum; j++) {
-					for(var k=0; k<options.numsNum; k++) {
-						// console.log(this.games[i]);
-						// console.log(i+","+j+","+k);
-						this.games[i].groups[j].numbers[k].animate();
-					}
-				}
-			}
-
+			// for(var i=0; i<options.gamesNum; i++) {
+			// 	for(var j=0; j<options.groupsNum; j++) {
+			// 		for(var k=0; k<options.numsNum; k++) {
+			// 			this.games[i].groups[j].numbers[k].animate();
+			// 		}
+			// 	}
+			// }
 			if(!this.optionsEnabled) {
 				$('.options').css("top", "-100%");
 			};
-
-			$(document).bind('keyup', function(event) {
-				var c = String.fromCharCode(event.keyCode);
-				var delay = 600;
-				if(c == "O") {
-					if(this.optionsEnabled) {
-						$('.options').animate({
-						    top: "-100%"
-						  }, delay
-						);
-						this.optionsEnabled = false;
-					} else {
-						$('.options').animate({
-						    top: 0
-						  }, delay
-						);
-						this.optionsEnabled = true;
-					}
-				}
-			});
-
 			console.log(this);
-
 		},
 		enableOptions: function(enable) {
 			optionsEnabled = enable;
 		}
 	};
-
 }());
 
 	// DEFS --------------------------------------------------------------------
