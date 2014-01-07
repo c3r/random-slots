@@ -2,10 +2,6 @@
 
 Random slots is a web based lottery game written in JS. Front-end of the game is rendered by a web browser.
 
-* Source: [https://github.com/h5bp/html5-boilerplate](https://github.com/h5bp/html5-boilerplate)
-* Homepage: [http://html5boilerplate.com](http://html5boilerplate.com)
-* Twitter: [@h5bp](http://twitter.com/h5bp)
-
 ## Controls
 * Left arrow - change to previous lottery game
 * Right arrow - change to next lottery game
