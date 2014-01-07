@@ -29,12 +29,14 @@ var LotteryGames = (function() {
 		games: [],
 		currentGameId: 0,
 		gameWidth: 0,
+		changeAnimSpeed: 0,
 
 		init: function( options ) {
 
 			var gameOptions, groupOptions, numOptions, game, group, number;
 
 			this.gameWidth = options.gameWidth || 980;
+			this.changeAnimSpeed = options.changeAnimSpeed || 1000;
 
 			// Games generation -----------------------------------
 			for(var i=0; i<options.gamesNum; i++) {
@@ -102,9 +104,17 @@ var LotteryGames = (function() {
 				this.currentGameId = nextGameId;
 				for (var key in this.games) {
 					if (this.games.hasOwnProperty(key)) {
-						this.games[key].element.animate({
-							left : "+=" + (this.gameWidth * direction)
-						}, 1000);
+						if(key == this.currentGameId) {
+							this.games[key].element.animate({
+								left : "+=" + (this.gameWidth * direction),
+								opacity: 1
+							}, this.changeAnimSpeed);
+						} else {
+							this.games[key].element.animate({
+								left : "+=" + (this.gameWidth * direction),
+								opacity : 0
+							}, this.changeAnimSpeed);
+						}
 					}
 				}
 			} else {

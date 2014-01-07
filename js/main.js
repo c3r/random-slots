@@ -35,9 +35,9 @@ LotteryGames.init({
 	borderColor		: YELLOW1,
 	fontSizeFactor 	: 0.5,
 	groupsNum	   	: 3,
-	groupTitle	   	: "Sekcja",
-	gameTitle	   	: "Paulinkowa gierka",
-	gamesNum	   	: 5,
+	groupTitle	   	: "Grupa",
+	gameTitle	   	: "Losowanie",
+	gamesNum	   	: 3,
 	numsNum		   	: 5,
 	parent		   	: $("body"),
 	min            	: 1,
@@ -46,7 +46,8 @@ LotteryGames.init({
 	maxRolls	   	: 2,
 	minTime   		: 3,
 	maxTime    		: 5,
-	gameWidth		: 1900
+	gameWidth		: 1000,
+	changeAnimSpeed : 500
 });
 // -----------------------------------------------------------------------------
 // Misc
