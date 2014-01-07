@@ -8,5 +8,5 @@ Random slots is a web based lottery game written in JS. Front-end of the game is
 * O - toggle options window
 
 ## Configuration
-Lottery game can be configured either from main.js with some constant values passed directly to
-the module ```init``` function and by entering values in options window in web browser.
+Lottery game can be configured either from ```main.js``` with some constant values passed directly to
+the module ```init()``` function and by entering values in options window in web browser.
