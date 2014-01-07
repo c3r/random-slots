@@ -92,6 +92,7 @@ body, html {
     background: #333;
     height: 100%;
     text-align: center;
+    overflow: hidden;
     background-image: url(../img/background-2.jpg);
 
 }
@@ -102,7 +103,7 @@ body, html {
     top: 0;
     left: 0;
     z-index: 9999;
-    width: 100%;
+    /*width: 100%;*/
     padding: 30px;
     text-align: left;
     font-size: 12px;
@@ -120,7 +121,7 @@ body, html {
 }
 
 .options .group-results input {
-    width: 80px;
+    width: 120px;
     font-size: 20px;
 }
 
@@ -135,7 +136,7 @@ body, html {
 }
 
 .options .main-options label {
-    width: 180px;
+    width: 200px;
     /*text-align: right;*/
     display: inline-block;
     vertical-align: middle;
@@ -196,6 +197,87 @@ h1 {
     padding: 0;
 }
 
+
+
+/* ==========================================================================
+   ========================================================================== */
+
+.container-wrapper {
+    /*overflow: hidden;*/
+    /*padding: 30px 0;*/
+    position:relative;
+}
+
+.container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    -webkit-perspective: 10000px;
+    -moz-perspective: 10000px;
+    -o-perspective: 10000px;
+    perspective: 10000px;
+}
+
+.ready .carousel {
+    -webkit-transition: -webkit-transform 3s;
+    -moz-transition: -moz-transform 3s;
+    -o-transition: -o-transform 3s;
+    transition: transform 3s;
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    background: white;
+    /*border: 2px solid black;*/
+}
+
+.carousel figure {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    height: 100px;
+    line-height: 100px;
+    font-size: 80px;
+    font-weight: bold;
+    text-align: center;
+    /*margin: 10px 0;*/
+    background: white;
+    border-left: 1px solid black;
+    display: block;
+    width: 100%;
+    color: black;
+}
+
+/* ==========================================================================
+   ========================================================================== */
+
+/* ==========================================================================
+   Games wrapper
+   ========================================================================== */
+#games-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    /*width: 200%;*/
+    /*height: 100%;*/
+}
+
+/* ==========================================================================
+   Game wrapper
+   ========================================================================== */
+.game-wrapper {
+    height: 100%;
+    position: absolute;
+    float: left;
+    display: inline-block;
+}
+
 /* ==========================================================================
    Entry group styles
    ========================================================================== */
@@ -203,42 +285,6 @@ h1 {
 .group-wrapper {
     display: inline-block;
     margin: 40px;
-}
-
-/* ==========================================================================
-   Single lottery entry styles
-   ========================================================================== */
-
-.lottery-table {
-/*    border-spacing: 5px;
-    border-collapse: separate;*/
-    border: 0;
-    margin: 20px 0;
-    /*background: white url(../img/shadow_bottom_bg.png) repeat-x 0 0px;*/
-}
-
-.lottery-table td {
-    border-top-style: solid;
-    border-bottom-style: solid;
-    border-left-style: dotted;
-    border-right-style: dotted;
-    border-width: 15px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-color: #444;
-}
-
-.lottery-table td:first-child {
-    border-left-width: 15px;
-}
-
-.lottery-table td:last-child {
-    border-right-width: 15px;
-}
-
-.lottery-table td:first-child,
-.lottery-table td:last-child {
-    border-style: solid;
 }
 
 /* ==========================================================================
@@ -252,8 +298,9 @@ h1 {
     top: 0px;
     right: 0px;
     bottom: 0px;
-    -webkit-box-shadow: inset 0 0 3em 0 rgba(0,0,0,0.9);
-            box-shadow: inset 0 0 3em 0 rgba(0,0,0,0.9);
+    -webkit-box-shadow: inset 0 0 2em 0 rgba(0,0,0,0.9);
+            box-shadow: inset 0 0 2em 0 rgba(0,0,0,0.9);
+            z-index: 100;
 }
 
 .number-wrapper {
@@ -261,6 +308,7 @@ h1 {
     margin: 0;
     padding: 0;
     position:relative;
+    background: white;
 }
 
 
@@ -274,11 +322,11 @@ h1 {
     border-left:1px solid #000;
     font-weight: bold;
     text-align: center;
-    background: white;
+    /*background: white;*/
     display: block;
 }
 
-.number-slot:first-child {
+.number-slot:first-child figure {
     border-left: none;
 }
 

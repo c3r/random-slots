@@ -11,9 +11,12 @@ var LotteryGroup = (function() {
 
         this.size = 0;
         this.id = options.id || 0;
-        this.name = options.name || "Grupa";
+        this.title = options.title || "Grupa " + this.id;
         this.numbers = [];
         this.element = options.element || null;
+
+        this.element.find("h1").text(this.title);
+
     }
 
     LotteryGroup.prototype.getSize = function() {

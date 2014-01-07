@@ -13,103 +13,115 @@
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    <body>
-        <!-- <img src="img/background-2.jpg" class="bg" alt=""> -->
-
+    <body class="ready">
         <div class="options">
             <form action="">
                 <div class="main-options">
-                    <fieldset>
-                        <legend>Nazwy</legend>
-                            <p>
-                                <label for="title">Główny tytuł loterii: </label>
-                                <input type="text" id="title" value="Loteria" />
-                            </p>
-                            <p>
-                                <label for="group-name">Nazwa generowana dla grup: </label>
-                                <input type="text" id="group-name" value="Grupa" />
-                            </p>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Opcje</legend>
-                        <p>
-                            <label for="lotteries-num">Ilość loterii na grupę: </label>
-                            <input type="number" id="lotteries-num" value="3" />
-                        </p>
-                        <p>
-                            <label for="groups-num">Ilość grup: </label>
-                            <input type="number" id="groups-num" value="4" />
-                        </p>
-                        <p>
-                            <label for="max-num">Wartość maksymalna: </label>
-                            <input type="number" id="max-num" value="999" />
-                        </p>
-                        <p>
-                            <label for="min-num">Wartość minimalna: </label>
-                            <input type="number" id="min-num" value="1" />
-                        </p>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Animacje</legend>
-                        <p>
-                            <label for="rolling-speed">Szybkość animacji (1-10): </label>
-                            <input type="number" id="rolling-speed" value="10" />
-                        </p>
-                        <p>
-                            <label for="min-spins">Minimalna ilość obrotów: </label>
-                            <input type="number" id="min-spins" value="3" />
-                        </p>
-                        <p>
-                            <label for="max-spins">Maksymalna ilość obrotów: </label>
-                            <input type="number" id="max-spins" value="10" />
-                        </p>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Wygląd</legend>
-                        <p>
-                            <label for="slot-height">Wysokość slotu: </label>
-                            <input type="number" id="slot-height" value="100" /> px
-                        </p>
-                        <p>
-                            <label for="slot-width">Szerokość slotu: </label>
-                            <input type="number" id="slot-width" value="80" /> px
-                        </p>
-                        <p>
-                            <label for="lottery-margins">Margines slotu: </label>
-                            <input type="number" id="lottery-margins" value="30" /> px
-                        </p>
-                        <p>
-                            <label for="lottery-margins">Kolor ramek: </label>
-                            <select name="color" id="color">
-                                <option value="1ABC9C">GREEN1    </option>
-                                <option value="16A085">GREEN2  </option>
-                                <option value="2ECC71">GREEN3  </option>
-                                <option value="27AE60">GREEN4  </option>
-                                <option value="3498DB">BLUE1   </option>
-                                <option value="2980B9">BLUE2   </option>
-                                <option value="34495E">BLUE3   </option>
-                                <option value="2C3E50">BLUE4   </option>
-                                <option value="9B59B6">PURPLE1 </option>
-                                <option value="8E44AD">PURPLE2 </option>
-                                <option value="F1C40F">YELLOW1 </option>
-                                <option value="F39C12">ORANGE1 </option>
-                                <option value="E67E22">ORANGE2 </option>
-                                <option value="D35400">ORANGE3 </option>
-                                <option value="E74C3C">RED1    </option>
-                                <option value="C0392B">RED2    </option>
-                                <option value="ECF0F1">GRAY1   </option>
-                                <option value="BDC3C7">GRAY2   </option>
-                                <option value="95A5A6">GRAY3   </option>
-                                <option value="7F8C8D">GRAY4   </option>
-                            </select>
-                        </p>
-                        <p>
-                            <label for="group-margins">Margines grupy: </label>
-                            <input type="number" id="group-margins" value="30" /> px
-                        </p>
-                    </fieldset>
-                </div>
+                <fieldset>
+                    <legend>Wygląd</legend>
+                    <p>
+                        <label for="slot-height">Wysokość slotu: </label>
+                        <input type="number" id="slot-height" value="" />
+                    </p>
+                    <p>
+                        <label for="slot-width">Szerokość slotu: </label>
+                        <input type="number" id="slot-width" value="" />
+                    </p>
+                    <p>
+                        <label for="border-color">Kolor ramek: </label>
+                        <select name="border-color" id="border-color">
+                            <option value="1ABC9C">GREEN1    </option>
+                            <option value="16A085">GREEN2  </option>
+                            <option value="2ECC71">GREEN3  </option>
+                            <option value="27AE60">GREEN4  </option>
+                            <option value="3498DB">BLUE1   </option>
+                            <option value="2980B9">BLUE2   </option>
+                            <option value="34495E">BLUE3   </option>
+                            <option value="2C3E50">BLUE4   </option>
+                            <option value="9B59B6">PURPLE1 </option>
+                            <option value="8E44AD">PURPLE2 </option>
+                            <option value="F1C40F">YELLOW1 </option>
+                            <option value="F39C12">ORANGE1 </option>
+                            <option value="E67E22">ORANGE2 </option>
+                            <option value="D35400">ORANGE3 </option>
+                            <option value="E74C3C">RED1    </option>
+                            <option value="C0392B">RED2    </option>
+                            <option value="ECF0F1">GRAY1   </option>
+                            <option value="BDC3C7">GRAY2   </option>
+                            <option value="95A5A6">GRAY3   </option>
+                            <option value="7F8C8D">GRAY4   </option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="font-size-factor">Współczynnik wielkości czcionki: </label>
+                        <input type="text" id="font-size-factor" value="" />
+                    </p>
+                    <p>
+                        <label for="game-width">Szerokość okna: </label>
+                        <input type="number" id="game-width" value="" />
+                    </p>
+                    <p>
+                        <label for="number-margin">Margines liczby: </label>
+                        <input type="number" id="number-margin" value="" />
+                    </p>
+                </fieldset>
 
+                <fieldset>
+                    <legend>Działanie</legend>
+                    <p>
+                        <label for="min">Minimalna wartość liczby: </label>
+                        <input type="number" id="min" value="" />
+                    </p>
+                    <p>
+                        <label for="max">Maksymalna wartość liczby: </label>
+                        <input type="number" id="max" value="" />
+                    </p>
+                    <p>
+                        <label for="min-rolls">Minimalna ilość obrotów: </label>
+                        <input type="number" id="min-rolls" value="" />
+                    </p>
+                    <p>
+                        <label for="max-rolls">Maksymalna ilość obrotów: </label>
+                        <input type="number" id="max-rolls" value="" />
+                    </p>
+                    <p>
+                        <label for="min-time">Minimalny czas obrotu: </label>
+                        <input type="number" id="min-time" value="" />
+                    </p>
+                    <p>
+                        <label for="max-time">Maksymalny czas obrotu: </label>
+                        <input type="number" id="max-time" value="" />
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Parametry</legend>
+                    <p>
+                        <label for="groups-num">Ilość grup na grę: </label>
+                        <input type="number" id="groups-num" value="" />
+                    </p>
+                    <p>
+                        <label for="group-title">Tytuł grup: </label>
+                        <input type="text" id="group-title" value="" />
+                    </p>
+                    <p>
+                        <label for="game-title">Tytuł gier: </label>
+                        <input type="text" id="game-title" value="" />
+                    </p>
+                    <p>
+                        <label for="games-num">Ilość gier: </label>
+                        <input type="number" id="games-num" value="" />
+                    </p>
+                    <p>
+                        <label for="nums-num">Ilość liczb na grupę: </label>
+                        <input type="number" id="nums-num" value="" />
+                    </p>
+                    <p>
+                        <label for="games-num">Ilość gier: </label>
+                        <input type="number" id="games-num" value="" />
+                    </p>
+                </fieldset>
+                </div>
                 <div class="group-results-wrapper">
                     <fieldset class="group-results">
                         <legend>Wyniki dla sekcji 1:</legend>
@@ -125,26 +137,38 @@
             </form>
         </div>
 
-<!--         <table class="lottery-template">
-            <tbody>
-                <tr class="lottery-row">
-                    <td>
+        <div id="games-wrapper">
 
-                    </td>
-                </tr>
-            </tbody>
-        </table> -->
+        </div>
 
         <div class="game-wrapper" id="game-template">
-            <h1>Losowanie {id}:</h1>
+            <h1>{title} {id}:</h1>
         </div>
         <div class="group-wrapper" id="group-template">
-            <h1>Grupa {id}:</h1>
+            <h1>{title} {id}:</h1>
         </div>
-
 
         <ul class="number-wrapper" id="number-template"></ul>
         <li class="number-slot" id="slot-template">
+            <div class="container-wrapper">
+                <section class="container">
+                    <div class="carousel" style="-webkit-transform: translateZ(0) rotateX(0deg);">
+                        <figure style="opacity: 1;">0</figure>
+                        <figure style="opacity: 1;">1</figure>
+                        <figure style="opacity: 1;">2</figure>
+                        <figure style="opacity: 1;">3</figure>
+                        <figure style="opacity: 1;">4</figure>
+                        <figure style="opacity: 1;">5</figure>
+                        <figure style="opacity: 1;">6</figure>
+                        <figure style="opacity: 1;">7</figure>
+                        <figure style="opacity: 1;">8</figure>
+                        <figure style="opacity: 1;">9</figure>
+                    </div>
+                </section>
+            </div>
+        </li>
+
+<!--         <li class="number-slot" id="slot-template">
             <div class="wrapper">
                 <div class="slider">
                     <ul>
@@ -161,7 +185,7 @@
                     </ul>
                 </div>
             </div>
-        </li>
+        </li> -->
 
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script src="js/lib/underscore-min.js"></script>
@@ -175,6 +199,45 @@
 
         <script src="js/LotteryGames.js"></script>
         <script src="js/main.js"></script>
+
+<script>
+
+    // var transformProp = Modernizr.prefixed('transform');
+
+
+    // Carousel3D.prototype.modify = function() {
+
+      // adjust rotation so panels are always flat
+      // this.rotation = Math.round( this.rotation / this.theta ) * this.theta;
+
+    // };
+
+    // Carousel3D.prototype.transform = function() {
+      // this.element.style[ transformProp ] = 'translateZ(-' + this.radius + 'px) ' + this.rotateFn + '(' + this.rotation + 'deg)';
+    // };
+
+
+
+    //var transformZ = (height/2) / ( Math.sin(0.314)/Math.cos(0.314) );
+
+    // var init = function() {
+
+      //   var carousel = new Carousel3D( $(".carousel") );
+
+      //   carousel.panelCount = 10;
+      //   carousel.modify();
+
+      // $('#next').click(function(){
+      //   var increment = parseInt( event.target.getAttribute('data-increment') );
+      //   carousel.rotation += carousel.theta * increment * -1 + 360;
+      //   carousel.transform();
+      // });
+
+
+    // };
+
+
+  </script>
 
     </body>
 </html>

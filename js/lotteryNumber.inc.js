@@ -26,17 +26,16 @@ var LotteryNumber = (function() {
         this.borderColor = options.borderColor || '000000';
         this.value = zeroFill(options.value, this.max.toString().length);
         this.element = options.element || null;
+        this.margin = options.margin || 10;
 
         var borderWidth = (options.slotOptions.height +
-                                options.slotOptions.height) / 2;
-            borderWidth *= 0.12;
+                                                options.slotOptions.height) / 2;
+        borderWidth *= 0.12;
 
         this.element.css("border-color", "#" + options.borderColor)
                     .css("border-width", borderWidth + "px")
                     .css("border-style", "solid")
-                    .css("margin", "1em");
-
-        // console.log(this.id + ": " + this.value);
+                    .css("margin", this.margin);
 
         for(var i=0; i<this.max.toString().length; i++) {
             var slotVal = this.value.toString()[i];
@@ -47,7 +46,6 @@ var LotteryNumber = (function() {
                                                     .clone()
                                                     .removeAttr("id") );
         }
-
     }
 
     LotteryNumber.prototype.appendTo = function(parent) {

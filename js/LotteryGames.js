@@ -26,34 +26,42 @@ var LotteryGames = (function() {
 
 	return {
 
-		optionsEnabled: false,
 		games: [],
+		currentGameId: 0,
+		gameWidth: 0,
 
 		init: function( options ) {
 
 			var gameOptions, groupOptions, numOptions, game, group, number;
+
+			this.gameWidth = options.gameWidth || 980;
+
 			// Games generation -----------------------------------
 			for(var i=0; i<options.gamesNum; i++) {
 				this.games[i] = new LotteryGame({
 					id        : i,
 					groupsNum : options.groupNum || 1,
-					title     : options.gameTitle + " " + i || "Losowanie",
+					width 	  : options.gameWidth || 980,
+					title     : options.gameTitle + " " + (i+1) || "Losowanie",
 					element   : options.gameTemplate.clone().removeAttr("id")
 				});
+
 				// Groups generation -----------------------------------
 				for(var j=0; j<options.groupsNum; j++) {
 					group = new LotteryGroup({
 						id       : j,
-						name     : options.groupTitle + " " + j || "Grupa",
+						title    : options.groupTitle + " " + (j+1) || "Grupa",
 						element  : options.groupTemplate.clone().removeAttr("id")
 					});
+
 					// Numbers generation -----------------------------------
 					for(var k=0; k<options.numsNum; k++) {
 						group.addNum( new LotteryNumber({
 							id 			 : k,
 		        			borderColor  : options.borderColor || "000000",
 		        			value        : getRand(options.min, options.max) || 0,
-		        			element      : options.numberTemplate.clone().removeAttr("id"),
+		        			element      : options.numberTemplate
+		        								  .clone().removeAttr("id"),
 		        			max 		 : options.max || 1000,
 		        			slotOptions  : {
 		        				id 			: k,
@@ -61,54 +69,59 @@ var LotteryGames = (function() {
 						        width       : options.slotWidth || 80,
 						        minRolls	: options.minRolls || 1,
 						        maxRolls	: options.maxRolls || 10,
+						        minTime		: options.minTime || 1,
+						        maxTime		: options.maxTime || 10,
 						        sliderClass : options.sliderClass || ".slider",
-						        fontSize    : options.fontSize || options.slotHeight * 0.7,
+						        fontSize    : options.slotHeight
+						        					   * options.fontSizeFactor,
 								template    : options.slotTemplate
 		        			}
 						}) );
 					}
 					this.games[i].addGroup( group );
 				}
-				this.games[i].appendTo( $("body") );
+				this.games[i].appendTo( options.gamesWrapper );
 			};
 
-			if(!this.optionsEnabled) {
-				$('.options').css("top", "-100%");
-			};
+
+
+			//------------------------------------------------------
 			console.log(this);
+			//------------------------------------------------------
+
+
 		},
+
 		enableOptions: function(enable) {
 			optionsEnabled = enable;
 		},
-		start: function(gameId) {
-			this.games[gameId].start();
-		}
+
+		changeGame: function(direction) {
+			var nextGameId = this.currentGameId - direction;
+			if(nextGameId >= 0 && nextGameId < this.games.length) {
+				this.currentGameId = nextGameId;
+				for (var key in this.games) {
+					if (this.games.hasOwnProperty(key)) {
+						this.games[key].element.animate({
+							left : "+=" + (this.gameWidth * direction)
+						}, 1000);
+					}
+				}
+			} else {
+				console.log("There's no game with id: " + nextGameId);
+			}
+		},
+
+		start: function(id) {
+			var game = this.games[ this.currentGameId ];
+			if( !game.played ) {
+				game.start();
+				game.played = true;
+			} else {
+				console.log("This game was already played!");
+			}
+		},
+
 	};
+
 }());
-
-	// DEFS --------------------------------------------------------------------
-	// var GREEN1	 = '1ABC9C';
-	// 	GREEN2	 = '16A085',
-	// 	GREEN3	 = '2ECC71',
-	// 	GREEN4	 = '27AE60',
-	// 	BLUE1	 = '3498DB',
-	// 	BLUE2	 = '2980B9',
-	// 	BLUE3	 = '34495E',
-	// 	BLUE4	 = '2C3E50',
-	// 	PURPLE1	 = '9B59B6',
-	// 	PURPLE2	 = '8E44AD',
-	// 	YELLOW1	 = 'F1C40F',
-	// 	ORANGE1	 = 'F39C12',
-	// 	ORANGE2	 = 'E67E22',
-	// 	ORANGE3	 = 'D35400',
-	// 	RED1	 = 'E74C3C',
-	// 	RED2	 = 'C0392B',
-	// 	GRAY1	 = 'ECF0F1',
-	// 	GRAY2	 = 'BDC3C7',
-	// 	GRAY3	 = '95A5A6',
-	// 	GRAY4	 = '7F8C8D';
-	// -------------------------------------------------------------------------
-
-
-
-
