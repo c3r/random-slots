@@ -21,11 +21,11 @@ var LotteryGroup = (function() {
 
     LotteryGroup.prototype.getSize = function() {
         return numbers.length;
-    }
+    };
 
     LotteryGroup.prototype.addNum = function(aNum) {
         this.numbers[this.size++] = aNum;
-    }
+    };
 
     LotteryGroup.prototype.appendTo = function(parent) {
         for (var key in this.numbers) {
@@ -34,7 +34,7 @@ var LotteryGroup = (function() {
             }
         }
         this.element.appendTo(parent);
-    }
+    };
 
     LotteryGroup.prototype.animate = function() {
         for (var key in this.numbers) {
@@ -42,7 +42,7 @@ var LotteryGroup = (function() {
                 this.numbers[key].animate();
             }
         }
-    }
+    };
 
     return LotteryGroup;
 

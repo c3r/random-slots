@@ -33,7 +33,7 @@ var LotteryGame = (function() {
 
     LotteryGame.prototype.addGroup = function(aGroup) {
         this.groups[this.size++] = aGroup;
-    }
+    };
 
     LotteryGame.prototype.appendTo = function(parent) {
         for (var key in this.groups) {
@@ -42,7 +42,7 @@ var LotteryGame = (function() {
             }
         }
         this.element.appendTo(parent);
-    }
+    };
 
     LotteryGame.prototype.start = function() {
         for (var key in this.groups) {
@@ -50,7 +50,7 @@ var LotteryGame = (function() {
                 this.groups[key].animate();
             }
         }
-    }
+    };
 
     return LotteryGame;
 

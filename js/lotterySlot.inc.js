@@ -38,7 +38,7 @@ var LotterySlot = (function() {
             'line-height' : this.height + 'px',
             'width'       : this.width,
             'font-size'   : this.fontSize + 'px'
-        }
+        };
 
         this.element.css( aCss );
         this.element.find(".container-wrapper").css( aCss );
@@ -83,7 +83,7 @@ var LotterySlot = (function() {
     };
 
     LotterySlot.prototype.appendTo = function(parent) {
-    	this.element.appendTo(parent);
+        this.element.appendTo(parent);
     }
 
     return LotterySlot;

@@ -5,15 +5,15 @@ var LotteryNumber = (function() {
 
     'use strict';
 
-	var intValue;
+    var intValue;
 
-	function zeroFill(number, width) {
-	  	width -= number.toString().length;
-	  	if ( width > 0 ) {
-	    	return new Array(width+(/\./.test(number)?2:1) ).join('0')+number;
-		}
-	  	return number + "";
-	}
+    function zeroFill(number, width) {
+        width -= number.toString().length;
+        if ( width > 0 ) {
+            return new Array(width+(/\./.test(number)?2:1) ).join('0')+number;
+        }
+        return number + "";
+    }
 
     function LotteryNumber( options ) {
         if (!(this instanceof LotteryNumber)) {
@@ -54,7 +54,7 @@ var LotteryNumber = (function() {
             }
         }
         this.element.appendTo(parent);
-    }
+    };
 
     LotteryNumber.prototype.animate = function() {
         for (var key in this.slots) {
@@ -62,7 +62,7 @@ var LotteryNumber = (function() {
                 this.slots[key].spin();
             }
         }
-    }
+    };
 
     return LotteryNumber;
 
