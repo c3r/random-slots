@@ -15,17 +15,25 @@
     </head>
     <body class="ready">
         <div class="options">
+            <article class="info">
+                <h2>Sposób użycia:</h2>
+                <ol>
+                    <li>Wprowadź wybrane przez siebie dla danej gry wartości w poniższych polach ustawień.</li>
+                    <li>Kliknij w przycisk <strong>"Pokaż wyniki losowania"</strong>. W ten sposób zostaną wygenerowane wyniki losowań. <strong>W tym momencie wyniki mogą zostać ręcznie podmienione</strong>.</li>
+                    <li>Kliknij w przycisk <strong>"Załaduj ustawienia"</strong>. W ten sposób w <strong>przeglądarce pojawi się</strong> gotowa gra, zgodna z załadowanymi ustawieniami oraz wylosowanymi wynikami.</li>
+                </ol>
+            </article>
             <form action="">
                 <div class="main-options">
                 <fieldset>
                     <legend>Wygląd</legend>
                     <p>
                         <label for="slot-height">Wysokość slotu: </label>
-                        <input type="number" id="slot-height" value="" />
+                        <input type="number" id="slot-height" value="" />px
                     </p>
                     <p>
                         <label for="slot-width">Szerokość slotu: </label>
-                        <input type="number" id="slot-width" value="" />
+                        <input type="number" id="slot-width" value="" />px
                     </p>
                     <p>
                         <label for="border-color">Kolor ramek: </label>
@@ -58,11 +66,11 @@
                     </p>
                     <p>
                         <label for="game-width">Szerokość okna: </label>
-                        <input type="number" id="game-width" value="" />
+                        <input type="number" id="game-width" value="" /> px
                     </p>
                     <p>
                         <label for="number-margin">Margines liczby: </label>
-                        <input type="number" id="number-margin" value="" />
+                        <input type="number" id="number-margin" value="" /> px
                     </p>
                 </fieldset>
 
@@ -120,30 +128,30 @@
                         <label for="nums-num">Ilość liczb na grupę: </label>
                         <input type="number" id="nums-num" value="" />
                     </p>
-                    <p>
-                        <label for="games-num">Ilość gier: </label>
-                        <input type="number" id="games-num" value="" />
-                    </p>
                 </fieldset>
-                </div>
-                <div class="group-results-wrapper">
-                    <fieldset class="group-results">
-                        <legend>Wyniki dla sekcji 1:</legend>
-                        <p class="lottery-result">
-                            <input type="number" />
-                        </p>
-                    </fieldset>
                 </div>
                 <p>
                     <input type="submit" name="reload" id="reload" value="Załaduj ustawienia" />
-                    <input type="submit" name="generateLottery" id="start-animation" value="Pokaż losowanie" />
+                    <input type="submit" name="generate" id="generate" value="Pokaż wyniki losowania" />
                 </p>
             </form>
+            <div class="results"></div>
         </div>
 
-        <div id="games-wrapper">
+        <fieldset class="results-wrapper" id="results-wrapper-template">
+            <legend>Wyniki dla {title}{id}</legend>
+        </fieldset>
 
-        </div>
+        <fieldset class="group-results" id="group-results-template">
+            <legend>Wyniki dla {title} {id}:</legend>
+
+        </fieldset>
+
+        <p class="number-result" id="number-result-template">
+            <input type="number" />
+        </p>
+
+        <div id="games-wrapper"></div>
 
         <div class="game-wrapper" id="game-template">
             <h1>{title} {id}:</h1>

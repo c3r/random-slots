@@ -1,5 +1,4 @@
 # [Random slots](https://github.com/c3r/random-slots)
-
 Random slots is a web based lottery game written in JS. Front-end of the game is rendered by a web browser.
 
 ## Controls

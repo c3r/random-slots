@@ -24,12 +24,8 @@ var GREEN1	 = '1ABC9C';
 // -----------------------------------------------------------------------------
 // Game module
 // -----------------------------------------------------------------------------
-LotteryGames.init({
-	gameTemplate   	: $("#game-template"),
-	groupTemplate  	: $("#group-template"),
-	numberTemplate 	: $("#number-template"),
-	slotTemplate   	: $("#slot-template"),
-	gamesWrapper	: $("#games-wrapper"),
+
+var defaults = {
 	slotHeight	   	: 70,
 	slotWidth	   	: 70,
 	borderColor		: YELLOW1,
@@ -39,7 +35,6 @@ LotteryGames.init({
 	gameTitle	   	: "Losowanie",
 	gamesNum	   	: 3,
 	numsNum		   	: 5,
-	parent		   	: $("body"),
 	min            	: 1,
 	max            	: 100,
 	minRolls	   	: 1,
@@ -47,8 +42,98 @@ LotteryGames.init({
 	minTime   		: 3,
 	maxTime    		: 5,
 	gameWidth		: 1000,
-	changeAnimSpeed : 500
+	changeAnimSpeed : 500,
+	numberMargin	: 10
+}
+
+$("#slot-height")       .val( defaults.slotHeight      );
+$("#slot-width")        .val( defaults.slotWidth       );
+$("#border-color")      .val( defaults.borderColor     );
+$("#font-size-factor")  .val( defaults.fontSizeFactor  );
+$("#groups-num")        .val( defaults.groupsNum       );
+$("#group-title")       .val( defaults.groupTitle      );
+$("#game-title")        .val( defaults.gameTitle       );
+$("#games-num")         .val( defaults.gamesNum        );
+$("#nums-num")          .val( defaults.numsNum         );
+$("#min")               .val( defaults.min             );
+$("#max")               .val( defaults.max             );
+$("#min-rolls")         .val( defaults.minRolls        );
+$("#max-rolls")         .val( defaults.maxRolls        );
+$("#min-time")          .val( defaults.minTime         );
+$("#max-time")          .val( defaults.maxTime         );
+$("#game-width")        .val( defaults.gameWidth       );
+$("#change-anim-speed") .val( defaults.changeAnimSpeed );
+$("#number-margin")     .val( defaults.numberMargin    );
+
+
+$("#generate").click(function(e){
+
+	e.preventDefault();
+
+	$(".results").children().each(function(){
+		$(this).remove();
+	});
+
+	LotteryGames.getGameResults({
+		gameResultsTpl : $("#results-wrapper-template"),
+		groupResultsTpl : $("#group-results-template"),
+		numberResultTpl : $("#number-result-template"),
+		groupTitle	   	: $("#group-title").val(),
+		gameTitle	   	: $("#game-title").val(),
+		min            	: parseInt(  $("#min").val()        ),
+		max            	: parseInt(  $("#max").val()        ),
+		groupsNum	   	: parseInt(  $("#groups-num").val() ),
+		gamesNum	   	: parseInt(  $("#games-num").val()  ),
+		numsNum		   	: parseInt(  $("#nums-num").val()   ),
+	});
+
 });
+
+$("#reload").click(function(e){
+
+	e.preventDefault();
+
+	$(".game-wrapper").children().each(function(){
+		$(this).remove();
+	});
+
+	LotteryGames.init({
+	// -------------------------------------------------------------------------
+	// Wrappers
+	// -------------------------------------------------------------------------
+		gameTemplate   	: $("#game-template"),
+		groupTemplate  	: $("#group-template"),
+		numberTemplate 	: $("#number-template"),
+		slotTemplate   	: $("#slot-template"),
+		gamesWrapper	: $("#games-wrapper"),
+		optionsElement  : $(".main-options"),
+		parent			: $("body"),
+	// -------------------------------------------------------------------------
+	// Game options
+	// -------------------------------------------------------------------------
+		fontSizeFactor 	: $("#font-size-factor").val(),
+		groupTitle	   	: $("#group-title").val(),
+		gameTitle	   	: $("#game-title").val(),
+		borderColor		: $("#border-color").val(),
+		slotHeight	   	: parseInt(  $("#slot-height").val()        ),
+		slotWidth	   	: parseInt(  $("#slot-width").val()         ),
+		groupsNum	   	: parseInt(  $("#groups-num").val()         ),
+		gamesNum	   	: parseInt(  $("#games-num").val()          ),
+		numsNum		   	: parseInt(  $("#nums-num").val()           ),
+		min            	: parseInt(  $("#min").val()                ),
+		max            	: parseInt(  $("#max").val()                ),
+		minRolls	   	: parseInt(  $("#min-rolls").val()          ),
+		maxRolls	   	: parseInt(  $("#max-rolls").val()          ),
+		minTime   		: parseInt(  $("#min-time").val()           ),
+		maxTime    		: parseInt(  $("#max-time").val()           ),
+		gameWidth		: parseInt(  $("#game-width").val()         ),
+		changeAnimSpeed : parseInt(  $("#change-anim-speed").val()  ),
+		numberMargin	: parseInt(  $("#number-margin").val()      )
+	});
+
+});
+
+
 // -----------------------------------------------------------------------------
 // Misc
 // -----------------------------------------------------------------------------
@@ -66,10 +151,13 @@ if(!this.optionsEnabled) {
 var showOptions = function() {
 
 	var delay = 333;
+	var elie = $(".options");
+	var outerHeight = elie.outerHeight();
+	    outerHeight += 100;
 
 	if(optionsEnabled) {
 		$('.options').animate({
-		    top: "-100%"
+		    top: "-"+outerHeight+"px"
 		  }, delay
 		);
 		optionsEnabled = false;
